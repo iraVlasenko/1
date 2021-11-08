@@ -26,7 +26,7 @@ D:\Users\student\Desktop\front 10\08.11.21\1>Задачка, перебрать 
 [123, 'voda', ['q', 'w', 'e' ], { a: 'b', v: 'qwe', c: 123} ]
 Новый массив
 [1234, 'pivo', ['q', 'w', 'e', 'r'], {a: 'b', v: 'qwe', c: 123}]*/
-
+/*
 let arr = [123, 'voda', ['q', 'w', 'e' ], { a: 'b', v: 'qwe', c: 123} ];
 console.log(`Исходный массив: ${arr}`);
 
@@ -42,7 +42,7 @@ for ( let i=0; i <4 ; i++){
 }    
 console.log(`Новый массив: ${arr}`);
 
-
+*/
 /*
 let arr = [123, 'voda', ['q', 'w', 'e' ], { a: 'b', v: 'qwe', c: 123} ];
 console.log(`Исходный массив: ${arr}`);
@@ -57,3 +57,68 @@ for (let i = 0; i < 4; i++) {
  console.log(`Новый массив: ${arr}`);
 
 */
+
+const contactList = [
+    {
+      id: 1,
+      first_name: 'Vasya',
+      last_name: 'Petrov',
+      nick_name: '',
+      phone: 093945394,
+      group: [
+        {
+          name: 'friends',
+          id: 2
+        }
+      ],
+      actions: null
+    },
+    {
+      id: 2,
+      first_name: 'Petya',
+      last_name: '',
+      nick_name: 'Sizo',
+      phone: 09722122,
+      group: [
+        {
+          name: 'best_friends',
+          id: 1
+        }
+      ],
+      actions: [
+        {
+          name: 'missed call',
+          value: 3,
+          id: 1
+        }
+      ]
+    },
+    {
+      id: 2,
+      first_name: 'Rustem',
+      last_name: '',
+      nick_name: 'Box',
+      phone: 09700000,
+      group: [
+        {
+          name: 'other',
+          id: 3
+        }
+      ],
+      actions: [
+        {
+          name: 'missed call',
+          value: 13,
+          id: 1
+        }
+      ]
+    }
+];
+contactList.map(contact => {
+    let actName = contact.actions != null ? contact.actions.map(action => action.name):'';
+    let actCounter = contact.actions != null ? contact.actions.map(action => action.value):'';
+     console.log(
+         `Имя:${contact.first_name}\nПсевдоним:${contact.last_name}\nНомер:${contact.phone}  ${actName} ${actCounter} \nГруппа:${contact.group[0].name}\n\n`
+          );
+    }
+) 
