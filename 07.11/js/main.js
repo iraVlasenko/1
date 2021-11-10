@@ -60,7 +60,7 @@ for (let i = 0; i < 4; i++) {
 
 const contactList = [
     {
-      id: 1,
+      id: 2,
       first_name: 'Vasya',
       last_name: 'Petrov',
       nick_name: '',
@@ -74,7 +74,7 @@ const contactList = [
       actions: null
     },
     {
-      id: 2,
+      id: 1,
       first_name: 'Petya',
       last_name: '',
       nick_name: 'Sizo',
@@ -94,7 +94,7 @@ const contactList = [
       ]
     },
     {
-      id: 2,
+      id: 3,
       first_name: 'Rustem',
       last_name: '',
       nick_name: 'Box',
@@ -114,11 +114,81 @@ const contactList = [
       ]
     }
 ];
-contactList.map(contact => {
-    let actName = contact.actions != null ? contact.actions.map(action => action.name):'';
-    let actCounter = contact.actions != null ? contact.actions.map(action => action.value):'';
-     console.log(
-         `Имя:${contact.first_name}\nПсевдоним:${contact.last_name}\nНомер:${contact.phone}  ${actName} ${actCounter} \nГруппа:${contact.group[0].name}\n\n`
-          );
-    }
-) 
+contactList.push  (
+  {
+    id: 4,
+    first_name: 'Ira',
+    last_name: 'Vlasenco',
+    nick_name: '',
+    phone: 09722123,
+    group: [
+      {
+        name: 'best_friends',
+        id: 1
+      }
+    ],
+    actions: [
+      {
+        name: 'missed call',
+        value: 3,
+        id: 1
+      }
+    ]
+  },
+  {
+    id: 5,
+    first_name: 'Vova',
+    last_name: 'Grosu',
+    nick_name: '',
+    phone: 09722124,
+    group: [
+      {
+        name: 'best_friends',
+        id: 1
+      }
+    ],
+    actions: [
+      {
+        name: 'missed call',
+        value: 3,
+        id: 1
+      }
+    ]
+  },
+  {
+    id: 6,
+    first_name: 'Ihor',
+    last_name: 'Kopcha',
+    nick_name: '',
+    phone: 09722156,
+    group: null,
+    actions:null,
+  },
+
+
+)
+
+
+function SortArray(x, y){
+  if (x.last_name < y.last_name) {return -1;}
+  if (x.last_name > y.last_name) {return 1;}
+  return 0;
+}
+
+let contactListSort = contactList.sort(SortArray);
+console.log(contactListSort);
+
+contactListSort.map(contact => {
+  let actName = contact.actions != null ? contact.actions.map(action => action.name):'';
+  let actCounter = contact.actions != null ? contact.actions.map(action => action.value):'';
+  let groupName = contact.group != null ? contact.group.map(group => group.name):'';
+   console.log(
+       `Имя:${contact.first_name}\nФамилия:${contact.last_name}\nНомер:${contact.phone}  ${actName} ${actCounter} \nГруппа:${groupName}\n\n`
+        );
+  }
+)
+
+const positiveActionsContactList = contactList.filter(contact => contact.group != null );
+
+  console.log(positiveActionsContactList);
+
